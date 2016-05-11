@@ -130,7 +130,7 @@ $(window).ready(function ()
                 // generate numbered figure supplemental window files
                 genFigSuppWins(secfile, btFig);
                 // generate unnumbered figure supplemental window files
-                //genFigSuppWins(secfile, btUnfig);
+                genFigSuppWins(secfile, btUnfig);
 
                 // Process tables
                 // use table subdirectory
@@ -205,7 +205,7 @@ $(window).ready(function ()
                 figBlock = figBlock.Replace("asset/ch1/", "../../");
 
                 // Edit "constant" header and footer for title and chapter CSS and JS file names
-                suppWinTop = _suppWinTop.Replace(subTitle, "Figure" + chapnum");
+                suppWinTop = _suppWinTop.Replace(subTitle, "Figure");
                 suppWinTop = suppWinTop.Replace(subChapNum, chapnum);
                 suppWinTop = suppWinTop.Replace(subManClass, "figure");
                 suppWinTop = suppWinTop.Replace(@"data-block_type=""section""", secType);
