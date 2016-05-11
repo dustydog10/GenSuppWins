@@ -130,7 +130,7 @@ $(window).ready(function ()
                 // generate numbered figure supplemental window files
                 genFigSuppWins(secfile, btFig);
                 // generate unnumbered figure supplemental window files
-                genFigSuppWins(secfile, btUnfig);
+                // genFigSuppWins(secfile, btUnfig);
 
                 // Process tables
                 // use table subdirectory
@@ -204,8 +204,17 @@ $(window).ready(function ()
                 // which are canned here
                 figBlock = figBlock.Replace("asset/ch1/", "../../");
 
+                // get figure number for supp win title
+                Regex rgx = new Regex(@"figure_\d+_(\d+).html");
+                string fignum = rgx.Replace(filename, "$1");
+                string title = "Figure";
+                if (fignum.Length > 0)
+                {
+                    title = String.Format("{0} {1}-{2}", title, chapnum, fignum);
+                }
+
                 // Edit "constant" header and footer for title and chapter CSS and JS file names
-                suppWinTop = _suppWinTop.Replace(subTitle, "Figure");
+                suppWinTop = _suppWinTop.Replace(subTitle, title);
                 suppWinTop = suppWinTop.Replace(subChapNum, chapnum);
                 suppWinTop = suppWinTop.Replace(subManClass, "figure");
                 suppWinTop = suppWinTop.Replace(@"data-block_type=""section""", secType);
@@ -244,15 +253,24 @@ $(window).ready(function ()
                 var attrs = tblEl.Attributes;
                 var filename = attrs["data-filename"];
 
+                // get table number for supp win title
+                Regex rgx = new Regex(@"table_\d+_(\d+).html");
+                string tblnum = rgx.Replace(filename, "$1");
+                string title = "Table";
+                if (tblnum.Length > 0)
+                {
+                    title = String.Format("{0} {1}-{2}", title, chapnum, tblnum);
+                }
+
                 // extract the HTML
                 var tblBlock = tblEl.OuterHTML;
 
                 // EDIT IMAGE PATHS - reference parent directory
-                Regex rgx = new Regex(@"(src="")asset/ch\d+/");
+                rgx = new Regex(@"(src="")asset/ch\d+/");
                 tblBlock = rgx.Replace(tblBlock, "$1../");
 
                 // Edit "constant" header and footer for title and chapter CSS and JS file names
-                suppWinTop = _suppWinTop.Replace(subTitle, "Table");
+                suppWinTop = _suppWinTop.Replace(subTitle, title);
                 suppWinTop = suppWinTop.Replace(subChapNum, chapnum);
                 suppWinTop = suppWinTop.Replace(subManClass, "table");
                 suppWinTop = suppWinTop.Replace(@"data-block_type=""section""", secType);
@@ -302,8 +320,17 @@ $(window).ready(function ()
                 Regex rgx = new Regex(@"(src="")asset/ch\d+/");
                 qBlock = rgx.Replace(qBlock, "$1../../../");
 
+                // get question number for supp win title
+                rgx = new Regex(@"exercise_\d+_(\d+).html");
+                string qtnum = rgx.Replace(filename, "$1");
+                string title = "Exercise";
+                if (qtnum.Length > 0)
+                {
+                    title = String.Format("{0} {1}-{2}", title, chapnum, qtnum);
+                }
+
                 // Edit "constant" header and footer for title and chapter CSS and JS file names
-                suppWinTop = _suppWinTop.Replace(subTitle, "Exercise");
+                suppWinTop = _suppWinTop.Replace(subTitle, title);
                 suppWinTop = suppWinTop.Replace(subChapNum, chapnum);
                 suppWinTop = suppWinTop.Replace(subManClass, "exercise");
                 suppWinTop = suppWinTop.Replace(@"data-block_type=""section""", secType);
@@ -348,8 +375,17 @@ $(window).ready(function ()
                 // Regex rgx = new Regex(@"(src="")asset/ch\d+/");
                 // expBlock = rgx.Replace(expBlock, "$1../../../../");
 
+                // get example number for supp win title
+                Regex rgx = new Regex(@"example_\d+_(\d+).html");
+                string qtnum = rgx.Replace(filename, "$1");
+                string title = "Example";
+                if (qtnum.Length > 0)
+                {
+                    title = String.Format("{0} {1}-{2}", title, chapnum, qtnum);
+                }
+
                 // Edit "constant" header and footer for title and chapter CSS and JS file names
-                suppWinTop = _suppWinTop.Replace(subTitle, "Example");
+                suppWinTop = _suppWinTop.Replace(subTitle, title);
                 suppWinTop = suppWinTop.Replace(subChapNum, chapnum);
                 suppWinTop = suppWinTop.Replace(subManClass, "example");
                 suppWinTop = suppWinTop.Replace(@"data-block_type=""section""", secType);
