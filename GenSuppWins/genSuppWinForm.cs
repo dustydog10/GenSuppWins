@@ -210,7 +210,7 @@ $(window).ready(function ()
                 string title = "Figure";
                 if (fignum.Length > 0)
                 {
-                    title = String.Format("{0} {1}-{2}", title, chapnum, fignum);
+                    title = String.Format("{0} {1}.{2}", title, chapnum, fignum);
                 }
 
                 // Edit "constant" header and footer for title and chapter CSS and JS file names
@@ -259,7 +259,7 @@ $(window).ready(function ()
                 string title = "Table";
                 if (tblnum.Length > 0)
                 {
-                    title = String.Format("{0} {1}-{2}", title, chapnum, tblnum);
+                    title = String.Format("{0} {1}.{2}", title, chapnum, tblnum);
                 }
 
                 // extract the HTML
@@ -326,7 +326,7 @@ $(window).ready(function ()
                 string title = "Exercise";
                 if (qtnum.Length > 0)
                 {
-                    title = String.Format("{0} {1}-{2}", title, chapnum, qtnum);
+                    title = String.Format("{0} {1}.{2}", title, chapnum, qtnum);
                 }
 
                 // Edit "constant" header and footer for title and chapter CSS and JS file names
@@ -381,7 +381,7 @@ $(window).ready(function ()
                 string title = "Example";
                 if (qtnum.Length > 0)
                 {
-                    title = String.Format("{0} {1}-{2}", title, chapnum, qtnum);
+                    title = String.Format("{0} {1}.{2}", title, chapnum, qtnum);
                 }
 
                 // Edit "constant" header and footer for title and chapter CSS and JS file names
